@@ -1,1 +1,1 @@
-Repositorio para programadores laravel :D
+Repositorio para enseñar  programadores laravel y websockets :D
