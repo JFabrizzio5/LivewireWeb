@@ -13,7 +13,7 @@
 <body>
     <header>
         <!-- Aquí puedes poner el header -->
-
+        <script src="{{ mix('js/app.js') }}"></script>
     </header>
     <main>
         @yield('content')
