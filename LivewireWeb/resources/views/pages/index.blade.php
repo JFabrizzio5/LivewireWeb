@@ -20,9 +20,12 @@ $fetchUrl = function () {
 
 ?>
 <div>
-
+    <livewire:testing-channels />
 
     @section('content')
+
+
+
         @vite('resources/js/app.js')
         <script>
             setTimeout(() => {

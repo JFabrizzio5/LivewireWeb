@@ -14,6 +14,7 @@
     <header>
         <!-- Aquí puedes poner el header -->
         <script src="{{ mix('js/app.js') }}"></script>
+        @livewireStyles
     </header>
     <main>
         @yield('content')
@@ -22,6 +23,7 @@
         <!-- Aquí puedes poner el footer -->
 
     </footer>
+    @livewireScripts
     <!-- Aquí puedes incluir tus scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
