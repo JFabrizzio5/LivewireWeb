@@ -6,11 +6,13 @@ use App\Events\testing;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-route::get('testing', function () {
-    event(new testing);
+Route::get('testing/{message}', function ($message) {
+    event(new Testing($message));
+
     $data = [
         'status' => 'success',
-        'message' => 'Aun asi brilla nuestro azul',
+        'message' => $message,
     ];
+
     return response()->json($data);
 });
