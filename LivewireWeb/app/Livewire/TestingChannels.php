@@ -4,11 +4,14 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Http;
 
 class TestingChannels extends Component
 {
     public $count = 1;
     public $data = "Sin datos";
+    public $message = 'Mensaje';
+    public $mensaje = "test";
 
     public function increment()
     {
@@ -35,6 +38,19 @@ class TestingChannels extends Component
         return $content['variable'] ?? 'No se encontraron datos';
     }
 
+    public function ejecutarUrl()
+    {
+        // Asegúrate de cambiar la URL base por la que corresponda
+        $url = "http://127.0.0.1:8000/testing/" . urlencode($this->mensaje);
+        $response = Http::get($url);
+
+        // Opcionalmente, manejar la respuesta
+        if ($response->successful()) {
+            session()->flash('success', $response->json()['message']);
+        } else {
+            session()->flash('error', 'Error al ejecutar la URL.');
+        }
+    }
 
     public function hacerPeticion()
     {

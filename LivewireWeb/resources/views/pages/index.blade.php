@@ -64,6 +64,31 @@ $fetchUrl = function () {
             });
         </script>
 
+        <script>
+            setTimeout(() => {
+                window.Echo.channel('testing')
+                    .listen('testing', (e) => {
+                        // Selecciona el contenedor del chat por su ID
+                        const chatContainer = document.getElementById('chat-container');
+
+                        // Crea un nuevo elemento div para el mensaje
+                        const nuevoMensaje = document.createElement('div');
+                        nuevoMensaje.classList.add('mensaje');
+
+                        // Agrega el contenido al nuevo mensaje
+                        nuevoMensaje.innerHTML = `
+                           <p>Data del evento: ${e.message ? e.message : 'No hay data disponible'}</p>
+                       `;
+
+                        // Agrega el nuevo mensaje al contenedor del chat
+                        chatContainer.appendChild(nuevoMensaje);
+
+                        // (Opcional) Hacer scroll hacia abajo automáticamente
+                        chatContainer.scrollTop = chatContainer.scrollHeight;
+                    });
+            }, 1000);
+        </script>
+
 
         @volt
             <div>
@@ -83,6 +108,7 @@ $fetchUrl = function () {
             </div>
         @endvolt
 
+        <div id="chat-container"></div>
 
 
     @endsection
